@@ -3,6 +3,9 @@ import React from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
+import Header from '../../components/Header'
+import Button from '../../components/Button'
+
 export default function Home() {
   const Navigation = useNavigation()
 
@@ -12,9 +15,7 @@ export default function Home() {
 
   return (
     <View style={styles.container}>
-      <View style={styles.header}>
-        <Text style={styles.logoText}>GOPlaces</Text>
-      </View>
+      <Header/>
 
       <StatusBar style="auto" />
 
@@ -24,9 +25,7 @@ export default function Home() {
         <TextInput placeholder="Usuário" style={styles.input}/>
         <TextInput placeholder="Senha" style={styles.input}/>
 
-        <TouchableOpacity style={styles.login}>
-          <Text style={styles.loginText}>Login</Text>
-        </TouchableOpacity>
+        <Button onPress={() => console.log('Login')}>Login</Button>
 
         <TouchableOpacity onPress={CreateAccount}>
           <Text style={styles.accountText}>Não tem uma conta? Crie agora.</Text>
@@ -42,14 +41,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     flex: 1
-  },
-
-  header: {
-    backgroundColor: '#2C93AA',
-    padding: 12,
-    margin: 0,
-    width: '100%',
-    marginBottom: 6
   },
 
   inputContainer: {
@@ -77,21 +68,6 @@ const styles = StyleSheet.create({
     textTransform: 'uppercase'
   },
 
-  login: {
-    backgroundColor: '#2C93AA',
-    width: '95%',
-    padding: 14,
-    margin: 4,
-    borderRadius: 8
-  },
-
-  loginText: {
-    color: '#FFF',
-    fontSize: 20,
-    textAlign: 'center',
-    fontWeight: 'bold',
-  },
-
   accountText: {
     color: '#FFF',
     fontSize: 14,
@@ -99,11 +75,4 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginRight: 10
   },
-
-  logoText: {
-    color: '#FFF',
-    fontSize: 28,
-    textAlign: 'left',
-    fontWeight: 'bold'
-  }
 });

@@ -1,15 +1,24 @@
 import React from  'react'
 import { StyleSheet, View, Text, TextInput, TouchableOpacity, ScrollView } from 'react-native'
+import { useNavigation } from '@react-navigation/native'
+
+import Header from '../../components/Header'
+import Button from '../../components/Button'
+import TitleText from '../../components/TitleText'
 
 export default function CreateAccount(){
+    const Navigation = useNavigation()
+
+    function CreateAccount(){
+        Navigation.push('EventTabs')
+    }
+
     return (
         <ScrollView>
             <View style={styles.container}>
-                <View style={styles.header}>
-                    <Text style={styles.logoText}>GOPlaces</Text>
-                </View>
+                <Header/>
 
-                <Text style={styles.title}>Dados cadastrais</Text>
+                <TitleText>Dados cadastrais</TitleText>
 
                 <View style={styles.inputContainer}>
                     <TextInput placeholder="Nome" style={styles.input}/>
@@ -20,9 +29,7 @@ export default function CreateAccount(){
                     <TextInput placeholder="Senha" style={styles.input}/>
                     <TextInput placeholder="Confirmar senha" style={styles.input}/>
 
-                    <TouchableOpacity style={styles.createAccount}>
-                        <Text style={styles.accountText}>Criar conta</Text>
-                    </TouchableOpacity>
+                    <Button onPress={CreateAccount}>Criar conta</Button>
                 </View>
             </View>
         </ScrollView>
@@ -35,22 +42,6 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         flex: 1
-    },
-
-    header: {
-        backgroundColor: '#2C93AA',
-        padding: 12,
-        margin: 0,
-        width: '100%',
-        marginBottom: 24
-    },
-
-    title: {
-        color: '#FFF',
-        fontSize: 36,
-        textAlign: 'center',
-        fontWeight: 'bold',
-        marginBottom: 10
     },
 
     inputContainer: {
@@ -82,11 +73,4 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         fontWeight: 'bold',
     },
-
-    logoText: {
-        color: '#FFF',
-        fontSize: 28,
-        textAlign: 'left',
-        fontWeight: 'bold'
-    }
 })
