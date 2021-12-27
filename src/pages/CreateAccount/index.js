@@ -3,7 +3,7 @@ import { StyleSheet, View, Text, TextInput, TouchableOpacity, ScrollView } from 
 import { useNavigation } from '@react-navigation/native'
 
 import Header from '../../components/Header'
-import Button from '../../components/Button'
+import MainButton from '../../components/MainButton'
 import TitleText from '../../components/TitleText'
 
 export default function CreateAccount(){
@@ -29,7 +29,7 @@ export default function CreateAccount(){
                     <TextInput placeholder="Senha" style={styles.input}/>
                     <TextInput placeholder="Confirmar senha" style={styles.input}/>
 
-                    <Button onPress={CreateAccount}>Criar conta</Button>
+                    <MainButton onPress={CreateAccount}>Criar conta</MainButton>
                 </View>
             </View>
         </ScrollView>

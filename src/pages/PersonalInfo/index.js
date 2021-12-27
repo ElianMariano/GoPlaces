@@ -4,7 +4,7 @@ import {useNavigation} from '@react-navigation/native'
 
 import Header from '../../components/Header'
 import TitleText from '../../components/TitleText'
-import Button from '../../components/Button'
+import MainButton from '../../components/MainButton'
 
 export default function PersonalInfo(){
     const Navigation = useNavigation()
@@ -29,11 +29,11 @@ export default function PersonalInfo(){
             <Text style={styles.text}>CPF/CNPJ: </Text>
             <Text style={styles.text}>Localização: </Text>
 
-            <Button onPress={NewEvent}>Novo evento</Button>
-            <Button onPress={() => console.log('Nova promoção')}>Nova promoção</Button>
-            <Button onPress={() => console.log('Alterar dados')}>Alterar dados</Button>
-            <Button onPress={() => console.log('Convidar')}>Convidar</Button>
-            <Button onPress={Logout}>Sair</Button>
+            <MainButton onPress={NewEvent}>Novo evento</MainButton>
+            <MainButton onPress={() => console.log('Nova promoção')}>Nova promoção</MainButton>
+            <MainButton onPress={() => console.log('Alterar dados')}>Alterar dados</MainButton>
+            <MainButton onPress={() => console.log('Convidar')}>Convidar</MainButton>
+            <MainButton onPress={Logout}>Sair</MainButton>
         </View>
     )
 }

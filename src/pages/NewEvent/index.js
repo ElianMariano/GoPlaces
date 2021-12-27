@@ -1,10 +1,11 @@
 import React from 'react'
-import {View, Text, StyleSheet, TextInput} from 'react-native'
+import {View, Text, StyleSheet, TextInput, Pressable} from 'react-native'
+import {Ionicons} from '@expo/vector-icons'
 import { useNavigation } from '@react-navigation/native'
 
 import Header from '../../components/Header'
 import TitleText from '../../components/TitleText'
-import Button from '../../components/Button'
+import MainButton from '../../components/MainButton'
 
 export default function NewEvent(){
     const {goBack} = useNavigation()
@@ -15,20 +16,27 @@ export default function NewEvent(){
 
     return (
         <View style={styles.container}>
-            <Header/>
+            <Header />
 
             <TitleText>Novo evento</TitleText>
 
             <TextInput placeholder="Novo Evento" style={styles.input}/>
 
-            <TextInput placeholder="Localização" style={styles.input}/>
+            <Pressable style={styles.locationButton}>
+                <Text style={styles.locationText}>
+                    <Ionicons size={22} color='red' name='pin' />
+                    Localização
+                </Text>
+            </Pressable>
 
             <View style={styles.uploadContainer}>
                 <Text style={styles.uploadText}>Upload de Imagem</Text>
             </View>
 
-            <Button onPress={() => console.log('Cadastrar evento')}>Cadastrar evento</Button>
-            <Button onPress={Cancel}>Cancelar</Button>
+            <View style={{flex: 1, paddingTop: '45%', width: '100%', paddingLeft: 8}}>
+                <MainButton onPress={() => console.log('Cadastrar evento')}>Cadastrar evento</MainButton>
+                <MainButton onPress={Cancel}>Cancelar</MainButton>
+            </View>
         </View>
     )
 }
@@ -52,19 +60,37 @@ const styles = StyleSheet.create({
         width: '95%'
     },
 
+    locationButton: {
+        backgroundColor: '#F3F3F3',
+        color: '#959595',
+        fontWeight: 'bold',
+        fontSize: 16,
+        borderRadius: 8,
+        padding: 16,
+        margin: 4,
+        width: '95%'
+    },
+
+    locationText: {
+        color: '#959595',
+        fontSize: 16,
+        fontWeight: 'bold'
+    },
+
     uploadContainer: {
         backgroundColor: '#F3F3F3',
         borderRadius: 8,
         padding: 16,
         margin: 4,
         width: '95%',
-        paddingBottom: 30,
-        paddingTop: 30
+        paddingBottom: 40,
+        paddingTop: 40
     },
 
     uploadText: {
         color: '#959595',
         fontSize: 16,
         fontWeight: 'bold'
-    }
+    },
+
 })

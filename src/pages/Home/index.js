@@ -4,7 +4,7 @@ import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-nativ
 import { useNavigation } from '@react-navigation/native';
 
 import Header from '../../components/Header'
-import Button from '../../components/Button'
+import MainButton from '../../components/MainButton'
 
 export default function Home() {
   const Navigation = useNavigation()
@@ -25,7 +25,7 @@ export default function Home() {
         <TextInput placeholder="Usuário" style={styles.input}/>
         <TextInput placeholder="Senha" style={styles.input}/>
 
-        <Button onPress={() => console.log('Login')}>Login</Button>
+        <MainButton onPress={() => console.log('Login')}>Login</MainButton>
 
         <TouchableOpacity onPress={CreateAccount}>
           <Text style={styles.accountText}>Não tem uma conta? Crie agora.</Text>
