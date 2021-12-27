@@ -10,7 +10,7 @@ export default function TitleText({children, fontSize}){
 const styles = StyleSheet.create({
     titleText: {
         color: '#FFF',
-        fontSize: 36,
+        fontSize: 32,
         textAlign: 'center',
         fontWeight: 'bold',
         marginBottom: 10

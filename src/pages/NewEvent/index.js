@@ -1,5 +1,5 @@
 import React from 'react'
-import {View, StyleSheet, TextInput} from 'react-native'
+import {View, Text, StyleSheet, TextInput} from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 
 import Header from '../../components/Header'
@@ -20,7 +20,12 @@ export default function NewEvent(){
             <TitleText>Novo evento</TitleText>
 
             <TextInput placeholder="Novo Evento" style={styles.input}/>
+
             <TextInput placeholder="Localização" style={styles.input}/>
+
+            <View style={styles.uploadContainer}>
+                <Text style={styles.uploadText}>Upload de Imagem</Text>
+            </View>
 
             <Button onPress={() => console.log('Cadastrar evento')}>Cadastrar evento</Button>
             <Button onPress={Cancel}>Cancelar</Button>
@@ -46,4 +51,20 @@ const styles = StyleSheet.create({
         margin: 4,
         width: '95%'
     },
+
+    uploadContainer: {
+        backgroundColor: '#F3F3F3',
+        borderRadius: 8,
+        padding: 16,
+        margin: 4,
+        width: '95%',
+        paddingBottom: 30,
+        paddingTop: 30
+    },
+
+    uploadText: {
+        color: '#959595',
+        fontSize: 16,
+        fontWeight: 'bold'
+    }
 })
