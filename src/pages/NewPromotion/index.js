@@ -1,5 +1,5 @@
 import React from 'react'
-import {View, Text, StyleSheet, TextInput, Pressable} from 'react-native'
+import {View, Text, StyleSheet, TextInput, ScrollView} from 'react-native'
 import {Ionicons} from '@expo/vector-icons'
 import { useNavigation } from '@react-navigation/native'
 
@@ -15,31 +15,33 @@ export default function NewPromotion(){
     }
 
     return (
-        <View style={styles.container}>
-            <Header />
+        <ScrollView>
+            <View style={styles.container}>
+                <Header />
 
-            <TitleText>Nova Promoção</TitleText>
+                <TitleText>Nova Promoção</TitleText>
 
-            <TextInput placeholder="Nome da Promoção" style={styles.input}/>
+                <TextInput placeholder="Nome da Promoção" style={styles.input}/>
 
-            <TextInput placeholder="Valor da Promoção" style={styles.input}/>
+                <TextInput placeholder="Valor da Promoção" style={styles.input}/>
 
-            <TextInput placeholder="Produto" style={styles.input}/>
+                <TextInput placeholder="Produto" style={styles.input}/>
 
-            <TextInput placeholder="Evento" style={styles.input}/>
+                <TextInput placeholder="Evento" style={styles.input}/>
 
-            <TextInput placeholder="Validade" style={styles.input}/>
+                <TextInput placeholder="Validade" style={styles.input}/>
 
-            <View style={styles.uploadContainer}>
-                <Text style={styles.uploadText}>Upload de Imagem</Text>
+                <View style={styles.uploadContainer}>
+                    <Text style={styles.uploadText}>Upload de Imagem</Text>
+                </View>
+
+
+                <View style={{flex: 1, paddingTop: '15%', width: '100%', paddingLeft: 8}}>
+                    <MainButton onPress={() => console.log('Cadastrar reserva')}>Cadastrar reserva</MainButton>
+                    <MainButton onPress={Cancel}>Cancelar</MainButton>
+                </View>
             </View>
-
-
-            <View style={{flex: 1, paddingTop: '15%', width: '100%', paddingLeft: 8}}>
-                <MainButton onPress={() => console.log('Cadastrar reserva')}>Cadastrar reserva</MainButton>
-                <MainButton onPress={Cancel}>Cancelar</MainButton>
-            </View>
-        </View>
+        </ScrollView>
     )
 }
 
