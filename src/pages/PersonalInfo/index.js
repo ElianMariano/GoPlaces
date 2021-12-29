@@ -12,6 +12,10 @@ export default function PersonalInfo(){
     function NewEvent(){
         Navigation.push('NewEvent')
     }
+    
+    function NewPromotion(){
+        Navigation.push('NewPromotion')
+    }
 
     function Logout(){
         Navigation.push('Home')
@@ -30,7 +34,7 @@ export default function PersonalInfo(){
             <Text style={styles.text}>Localização: </Text>
 
             <MainButton onPress={NewEvent}>Novo evento</MainButton>
-            <MainButton onPress={() => console.log('Nova promoção')}>Nova promoção</MainButton>
+            <MainButton onPress={NewPromotion}>Nova promoção</MainButton>
             <MainButton onPress={() => console.log('Alterar dados')}>Alterar dados</MainButton>
             <MainButton onPress={() => console.log('Convidar')}>Convidar</MainButton>
             <MainButton onPress={Logout}>Sair</MainButton>
@@ -48,7 +52,7 @@ const styles = StyleSheet.create({
 
     text: {
         color: '#FFF',
-        fontSize: 16,
+        fontSize: 12,
         textAlign: 'left',
         fontWeight: 'bold',
         marginBottom: 10
