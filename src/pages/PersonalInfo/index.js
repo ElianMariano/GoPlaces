@@ -12,14 +12,9 @@ export default function PersonalInfo(){
     function NewEvent(){
         Navigation.push('NewEvent')
     }
-    function Reserve(){
-        Navigation.push('Reserve')
-    }
+    
     function NewPromotion(){
         Navigation.push('NewPromotion')
-    }
-    function Promotion(){
-        Navigation.push('Promotion')
     }
 
     function Logout(){
@@ -39,9 +34,7 @@ export default function PersonalInfo(){
             <Text style={styles.text}>Localização: </Text>
 
             <MainButton onPress={NewEvent}>Novo evento</MainButton>
-            <MainButton onPress={Reserve}>Reservar</MainButton>
             <MainButton onPress={NewPromotion}>Nova promoção</MainButton>
-            <MainButton onPress={Promotion}>Promoção</MainButton>
             <MainButton onPress={() => console.log('Alterar dados')}>Alterar dados</MainButton>
             <MainButton onPress={() => console.log('Convidar')}>Convidar</MainButton>
             <MainButton onPress={Logout}>Sair</MainButton>
