@@ -35,7 +35,7 @@ export default function NewPromotion(){
             </View>
 
 
-            <View style={{flex: 1, paddingTop: '5%', width: '100%', paddingLeft: 8}}>
+            <View style={{flex: 1, paddingTop: '15%', width: '100%', paddingLeft: 8}}>
                 <MainButton onPress={() => console.log('Cadastrar reserva')}>Cadastrar reserva</MainButton>
                 <MainButton onPress={Cancel}>Cancelar</MainButton>
             </View>
@@ -85,8 +85,8 @@ const styles = StyleSheet.create({
         padding: 16,
         margin: 4,
         width: '95%',
-        paddingBottom: 25,
-        paddingTop: 25
+        paddingBottom: 40,
+        paddingTop: 40
     },
 
     uploadText: {

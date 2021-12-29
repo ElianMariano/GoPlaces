@@ -7,7 +7,7 @@ import Header from '../../components/Header'
 import TitleText from '../../components/TitleText'
 import MainButton from '../../components/MainButton'
 
-export default function Reserve(){
+export default function Promotion(){
     const {goBack} = useNavigation()
 
     function Cancel(){
@@ -18,19 +18,17 @@ export default function Reserve(){
         <View style={styles.container}>
             <Header />
 
-            <TitleText>Nova Reserva</TitleText>
-            
-            <TextInput placeholder="Horário" style={styles.input}/>
+            <TitleText>Promoções</TitleText>
 
-            <TextInput placeholder="Dia" style={styles.input}/>
+            <TextInput placeholder="Buteco do Carangueijo: 1 Heineken" style={styles.input}/>
 
-            <TextInput placeholder="Quantidade de Pessoas" style={styles.input}/>
-
-            <TextInput placeholder="Promoções" style={styles.input}/>
+            <View style={styles.uploadContainer}>
+                <Text style={styles.uploadText}>Upload de Imagem</Text>
+            </View>
 
 
-            <View style={{flex: 1, paddingTop: '20%', width: '100%', paddingLeft: 8}}>
-                <MainButton onPress={() => console.log('Cadastrar reserva')}>Reservar</MainButton>
+            <View style={{flex: 1, paddingTop: '35%', width: '100%', paddingLeft: 8}}>
+                <MainButton onPress={() => console.log('Cadastrar reserva')}>Participar</MainButton>
                 <MainButton onPress={Cancel}>Cancelar</MainButton>
             </View>
         </View>
