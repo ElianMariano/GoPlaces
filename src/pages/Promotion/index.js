@@ -27,7 +27,7 @@ export default function Promotion(){
             </View>
 
 
-            <View style={{flex: 1, paddingTop: '35%', width: '100%', paddingLeft: 8}}>
+            <View style={{flex: 1, paddingTop: '46%', width: '100%', paddingLeft: 8}}>
                 <MainButton onPress={() => console.log('Cadastrar reserva')}>Participar</MainButton>
                 <MainButton onPress={Cancel}>Cancelar</MainButton>
             </View>

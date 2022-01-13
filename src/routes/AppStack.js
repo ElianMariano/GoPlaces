@@ -7,6 +7,8 @@ import CreateAccount from '../pages/CreateAccount';
 import EventTabs from './EventTabs';
 import NewEvent from '../pages/NewEvent';
 import NewPromotion from '../pages/NewPromotion';
+import Reserve from '../pages/Reserve';
+import Promotion from '../pages/Promotion';
 
 const Stack = createNativeStackNavigator()
 
@@ -24,6 +26,8 @@ export default function AppStack(){
                 <Stack.Screen name="EventTabs" component={EventTabs} />
                 <Stack.Screen name="NewEvent" component={NewEvent} />
                 <Stack.Screen name="NewPromotion" component={NewPromotion} />
+                <Stack.Screen name="Reserve" component={Reserve} />
+                <Stack.Screen name="Promotion" component={Promotion} />
             </Stack.Navigator>
         </NavigationContainer>
     )

@@ -1,5 +1,5 @@
 import React from 'react'
-import {View, Text, StyleSheet, TextInput, Pressable} from 'react-native'
+import {View, Text, StyleSheet, TextInput, Pressable, ScrollView} from 'react-native'
 import {Ionicons} from '@expo/vector-icons'
 import { useNavigation } from '@react-navigation/native'
 
@@ -17,28 +17,29 @@ export default function NewPromotion(){
     return (
         <View style={styles.container}>
             <Header />
+            <ScrollView showsVerticalScrollIndicator={true}>
+                <TitleText>Nova Promoção</TitleText>
 
-            <TitleText>Nova Promoção</TitleText>
+                <TextInput placeholder="Nome da Promoção" style={styles.input}/>
 
-            <TextInput placeholder="Nome da Promoção" style={styles.input}/>
+                <TextInput placeholder="Valor da Promoção" style={styles.input}/>
 
-            <TextInput placeholder="Valor da Promoção" style={styles.input}/>
+                <TextInput placeholder="Produto" style={styles.input}/>
 
-            <TextInput placeholder="Produto" style={styles.input}/>
+                <TextInput placeholder="Evento" style={styles.input}/>
 
-            <TextInput placeholder="Evento" style={styles.input}/>
+                <TextInput placeholder="Validade" style={styles.input}/>
 
-            <TextInput placeholder="Validade" style={styles.input}/>
+                <View style={styles.uploadContainer}>
+                    <Text style={styles.uploadText}>Upload de Imagem</Text>
+                </View>
+            
 
-            <View style={styles.uploadContainer}>
-                <Text style={styles.uploadText}>Upload de Imagem</Text>
-            </View>
-
-
-            <View style={{flex: 1, paddingTop: '15%', width: '100%', paddingLeft: 8}}>
-                <MainButton onPress={() => console.log('Cadastrar reserva')}>Cadastrar reserva</MainButton>
-                <MainButton onPress={Cancel}>Cancelar</MainButton>
-            </View>
+                <View style={{flex: 1, paddingTop: '10%', width: '100%', paddingLeft: 8}}>
+                    <MainButton onPress={() => console.log('Cadastrar reserva')}>Cadastrar reserva</MainButton>
+                    <MainButton onPress={Cancel}>Cancelar</MainButton>
+                </View>
+            </ScrollView>
         </View>
     )
 }
@@ -46,8 +47,9 @@ export default function NewPromotion(){
 const styles = StyleSheet.create({
     container: {
         backgroundColor: '#4CB6CE',
-        alignItems: 'center',
-        justifyContent: 'center',
+        //alignItems: 'center',
+        //justifyContent: 'center',
+        //width: 362,
         flex: 1
     },
 
@@ -70,7 +72,8 @@ const styles = StyleSheet.create({
         borderRadius: 8,
         padding: 16,
         margin: 4,
-        width: '95%'
+       // width: 300,
+        width: '150%'
     },
 
     locationText: {
