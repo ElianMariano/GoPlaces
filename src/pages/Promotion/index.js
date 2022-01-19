@@ -20,7 +20,7 @@ export default function Promotion(){
 
             <TitleText>Promoções</TitleText>
 
-            <TextInput placeholder="Buteco do Carangueijo: 1 Heineken" style={styles.input}/>
+            <TextInput placeholder="Buteco do Carangueijo: 2 Heineken" style={styles.input}/>
 
             <View style={styles.uploadContainer}>
                 <Text style={styles.uploadText}>Upload de Imagem</Text>
