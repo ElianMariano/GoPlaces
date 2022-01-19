@@ -20,14 +20,14 @@ export default function Promotion(){
 
             <TitleText>Promoções</TitleText>
 
-            <TextInput placeholder="Buteco do Carangueijo: 1 Heineken" style={styles.input}/>
+            <TextInput placeholder="Buteco do Carangueijo: 2 Heineken" style={styles.input}/>
 
             <View style={styles.uploadContainer}>
                 <Text style={styles.uploadText}>Upload de Imagem</Text>
             </View>
 
 
-            <View style={{flex: 1, paddingTop: '35%', width: '100%', paddingLeft: 8}}>
+            <View style={{flex: 1, paddingTop: '46%', width: '100%', paddingLeft: 8}}>
                 <MainButton onPress={() => console.log('Cadastrar reserva')}>Participar</MainButton>
                 <MainButton onPress={Cancel}>Cancelar</MainButton>
             </View>

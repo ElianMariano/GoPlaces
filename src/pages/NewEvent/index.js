@@ -33,7 +33,7 @@ export default function NewEvent(){
                 <Text style={styles.uploadText}>Upload de Imagem</Text>
             </View>
 
-            <View style={{flex: 1, paddingTop: '45%', width: '100%', paddingLeft: 8}}>
+            <View style={{flex: 1, paddingTop: '28%', width: '100%', paddingLeft: 8}}>
                 <MainButton onPress={() => console.log('Cadastrar evento')}>Cadastrar evento</MainButton>
                 <MainButton onPress={Cancel}>Cancelar</MainButton>
             </View>
