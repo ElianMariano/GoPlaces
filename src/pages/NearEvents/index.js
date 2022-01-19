@@ -25,15 +25,29 @@ export default function PersonalInfo(){
         <View style={styles.container}>
             
             <Header/>
-                <ScrollView showsVerticalScrollIndicator={true}>
-                    <TitleText>Eventos Próximos</TitleText>
-                    <View style={styles.box1}>
-                        <Image
-                            source={require('../NearEvents/primeira.png')}
-                            style={styles.img}
-                        ></Image>
+                <TitleText>Eventos Próximos</TitleText>
+                <ScrollView showsVerticalScrollIndicator={false}>
+                <View style={styles.box1}>
+                    <Image
+                        source={require('../NearEvents/primeira.png')}
+                        style={styles.img}
+                    ></Image>
                         
-                        <Text style={{ color: 'grey', fontSize: 25, fontWeight: 'bold', margin: 5}}>Restaurante</Text>   
+                    <View style={{
+                        flexDirection: 'row',
+                        margin: 10,
+                        width: 140,
+                        height: 70,
+                        justifyContent: 'space-between'
+                        }}>
+                            <Text style={{ color: '#363636', fontSize: 20, fontWeight: 'bold', margin: 5}}>Boteco do Carangueijo</Text>
+                            <Text style={{ color: '#808080', fontSize: 20, fontWeight: 'bold', margin: 5,}}>       Endereço</Text>
+                            <Image
+                        source={require('../NearEvents/endereco.png')}
+                        style={styles.img2}
+                    ></Image>
+                        </View>
+                           
                         <View style={{
                             flexDirection: 'row',
                             margin: 10,
@@ -42,20 +56,33 @@ export default function PersonalInfo(){
                             justifyContent: 'space-between'
                             }}>
                                 <MainButton onPress={Promotion}>Promoções</MainButton>
-                                <MainButton onPress={Reserve}>Reservar</MainButton>
+                                <MainButton onPress={Reserve}> Reservar </MainButton>
                                 
                         </View>
                     </View>
                     
-
                     <View style={styles.box1}>
                         <Image
                             source={require('../NearEvents/segunda.png')}
                             style={styles.img}
                         ></Image>
                         
-                        <Text style={{ color: 'grey', fontSize: 25, fontWeight: 'bold', margin: 5}}>Restaurante</Text>
-                            
+                        <View style={{
+                            flexDirection: 'row',
+                            margin: 10,
+                            width: 140,
+                            height: 70,
+                            justifyContent: 'space-between'
+                            }}>
+                                <Text style={{ color: '#363636', fontSize: 20, fontWeight: 'bold', margin: 5}}>Kiko's Rest e Pizzaria</Text>
+                                <Text style={{ color: '#808080', fontSize: 20, fontWeight: 'bold', margin: 5}}>    Endereço</Text>
+                                <Image
+                                    source={require('../NearEvents/endereco.png')}
+                                    style={styles.img2}
+                                ></Image>
+                                
+                            </View>
+                           
                         <View style={{
                             flexDirection: 'row',
                             margin: 10,
@@ -64,7 +91,8 @@ export default function PersonalInfo(){
                             justifyContent: 'space-between'
                             }}>
                                 <MainButton onPress={Promotion}>Promoções</MainButton>
-                                <MainButton onPress={Reserve}>Reservar</MainButton>
+                                <MainButton onPress={Reserve}> Reservar </MainButton>
+                                
                         </View>
                     </View>
     
@@ -95,6 +123,11 @@ const styles = StyleSheet.create({
         alignItems:'center',
         width: 300,
         height: 250,
+        margin: 10,
+      },
+      img2:{
+        width: 20,
+        height: 20,
         margin: 10,
       },
     box1:{
