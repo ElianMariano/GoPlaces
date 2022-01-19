@@ -1,5 +1,5 @@
 import React from 'react'
-import {View, Text, StyleSheet, TextInput, Pressable, ScrollView} from 'react-native'
+import {View, Text, StyleSheet, TextInput, ScrollView} from 'react-native'
 import {Ionicons} from '@expo/vector-icons'
 import { useNavigation } from '@react-navigation/native'
 
@@ -15,9 +15,10 @@ export default function NewPromotion(){
     }
 
     return (
-        <View style={styles.container}>
-            <Header />
-            <ScrollView showsVerticalScrollIndicator={true}>
+        <ScrollView>
+            <View style={styles.container}>
+                <Header />
+
                 <TitleText>Nova Promoção</TitleText>
 
                 <TextInput placeholder="Nome da Promoção" style={styles.input}/>
@@ -33,23 +34,22 @@ export default function NewPromotion(){
                 <View style={styles.uploadContainer}>
                     <Text style={styles.uploadText}>Upload de Imagem</Text>
                 </View>
-            
 
-                <View style={{flex: 1, paddingTop: '10%', width: '100%', paddingLeft: 8}}>
+
+                <View style={{flex: 1, paddingTop: '15%', width: '100%', paddingLeft: 8}}>
                     <MainButton onPress={() => console.log('Cadastrar reserva')}>Cadastrar reserva</MainButton>
                     <MainButton onPress={Cancel}>Cancelar</MainButton>
                 </View>
-            </ScrollView>
-        </View>
+            </View>
+        </ScrollView>
     )
 }
 
 const styles = StyleSheet.create({
     container: {
         backgroundColor: '#4CB6CE',
-        //alignItems: 'center',
-        //justifyContent: 'center',
-        //width: 362,
+        alignItems: 'center',
+        justifyContent: 'center',
         flex: 1
     },
 
@@ -72,8 +72,7 @@ const styles = StyleSheet.create({
         borderRadius: 8,
         padding: 16,
         margin: 4,
-       // width: 300,
-        width: '150%'
+        width: '95%'
     },
 
     locationText: {
