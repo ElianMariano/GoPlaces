@@ -1,13 +1,12 @@
 import React from 'react'
 import {View, Text, StyleSheet, TextInput, ScrollView, Pressable} from 'react-native'
-import {Ionicons} from '@expo/vector-icons'
 import { useNavigation } from '@react-navigation/native'
 
 import Header from '../../components/Header'
 import TitleText from '../../components/TitleText'
 import MainButton from '../../components/MainButton'
 
-export default function ChangeData(){
+export default function ChangePassword(){
     const {goBack} = useNavigation()
 
     function Cancel(){
@@ -19,31 +18,22 @@ export default function ChangeData(){
             <View style={styles.container}>
                 <Header />
 
-                <TitleText>Alterar Dados</TitleText>
+                <TitleText>Alterar Senha</TitleText>
 
                 <Text> </Text>
                 
-                <TextInput placeholder="Nome" style={styles.input}/>
+                <TextInput placeholder="Senha" style={styles.input}/>
 
-                <TextInput placeholder="Data de Nascimento" style={styles.input}/>
+                <TextInput placeholder="Confirmar Senha" style={styles.input}/>
 
-                <TextInput placeholder="Email" style={styles.input}/>
-
-                <TextInput placeholder="CPF/CNPJ" style={styles.input}/> 
-
-                <Pressable style={styles.locationButton}>
-                    <Text style={styles.locationText}>
-                        <Ionicons size={22} color='red' name='pin' />
-                        Localização
-                    </Text>
-                </Pressable>
+                
 
                 <Text> </Text>
                 <Text> </Text>
                 <Text> </Text>
 
                 <View style={{flex: 1, paddingTop: '15%', width: '100%', paddingLeft: 8}}>
-                    <MainButton onPress={() => console.log('Cadastrar reserva')}>Alterar Dados</MainButton>
+                    <MainButton onPress={() => console.log('Cadastrar reserva')}>Mudar Senha</MainButton>
                     <MainButton onPress={Cancel}>Cancelar</MainButton>
                 </View>
             </View>
