@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
 
   promotionText: {
     color: '#FFF',
-    fontSize: 40,
+    fontSize: 46,
     textAlign: 'left',
     fontWeight: 'bold',
     margin: 4,

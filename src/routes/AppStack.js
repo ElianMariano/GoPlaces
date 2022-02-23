@@ -9,6 +9,8 @@ import NewEvent from '../pages/NewEvent';
 import NewPromotion from '../pages/NewPromotion';
 import Reserve from '../pages/Reserve';
 import Promotion from '../pages/Promotion';
+import Maps from '../pages/Maps';
+import Maps2 from '../pages/Maps2';
 
 const Stack = createNativeStackNavigator()
 
@@ -27,6 +29,8 @@ export default function AppStack(){
                 <Stack.Screen name="NewEvent" component={NewEvent} />
                 <Stack.Screen name="NewPromotion" component={NewPromotion} />
                 <Stack.Screen name="Reserve" component={Reserve} />
+                <Stack.Screen name="Maps" component={Maps} />
+                <Stack.Screen name="Maps2" component={Maps2} />
                 <Stack.Screen name="Promotion" component={Promotion} />
             </Stack.Navigator>
         </NavigationContainer>
