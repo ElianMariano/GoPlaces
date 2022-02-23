@@ -17,6 +17,13 @@ export default function PersonalInfo(){
         Navigation.push('Promotion')
     }
 
+    function Maps(){
+        Navigation.push('Maps')
+    }
+    function Maps2(){
+        Navigation.push('Maps2')
+    }
+
     function Logout(){
         Navigation.push('Home')
     }
@@ -40,12 +47,15 @@ export default function PersonalInfo(){
                         height: 70,
                         justifyContent: 'space-between'
                         }}>
-                            <Text style={{ color: '#363636', fontSize: 20, fontWeight: 'bold', margin: 5}}>Boteco do Carangueijo</Text>
-                            <Text style={{ color: '#808080', fontSize: 20, fontWeight: 'bold', margin: 5,}}>       Endereço</Text>
-                            <Image
-                        source={require('../NearEvents/endereco.png')}
-                        style={styles.img2}
-                    ></Image>
+                            <Text style={{ color: 'black', fontSize: 24, fontWeight: 'bold', margin: 5}}>Verdinho Bar Univer    </Text>
+                                <MainButton 
+                                onPress={Maps}
+                                >
+                                Endereço<Image
+                                    source={require('../NearEvents/endereco2.png')}
+                                    style={styles.img2}
+                                ></Image>
+                                </MainButton>
                         </View>
                            
                         <View style={{
@@ -74,13 +84,13 @@ export default function PersonalInfo(){
                             height: 70,
                             justifyContent: 'space-between'
                             }}>
-                                <Text style={{ color: '#363636', fontSize: 20, fontWeight: 'bold', margin: 5}}>Kiko's Rest e Pizzaria</Text>
-                                <Text style={{ color: '#808080', fontSize: 20, fontWeight: 'bold', margin: 5}}>    Endereço</Text>
-                                <Image
-                                    source={require('../NearEvents/endereco.png')}
+                                <Text style={{ color: 'black', fontSize: 23, fontWeight: 'bold', margin: 5}}>Kiko's Rest e Pizzaria</Text>
+                                    <MainButton onPress={Maps2}>Endereço<Image
+                                    source={require('../NearEvents/endereco2.png')}
                                     style={styles.img2}
                                 ></Image>
                                 
+                                    </MainButton>
                             </View>
                            
                         <View style={{
@@ -115,17 +125,25 @@ const styles = StyleSheet.create({
         fontSize: 12,
         textAlign: 'left',
         fontWeight: 'bold',
-        marginBottom: 20
+        marginBottom: 25
     },
     img:{
         flex: 1,
-        flexDirection:'row',  
+        flexDirection:'row', 
         alignItems:'center',
         width: 300,
         height: 250,
         margin: 10,
       },
-      img2:{
+      img3:{
+       flexDirection:'row', 
+       alignItems:'center',
+       justifyContent: 'space-between',
+        width: 20,
+        height: 20,
+        margin: 10,
+      },
+    img2:{
         width: 20,
         height: 20,
         margin: 10,
