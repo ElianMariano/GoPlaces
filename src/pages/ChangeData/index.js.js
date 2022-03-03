@@ -2,7 +2,6 @@ import React from  'react'
 import { StyleSheet, View, Text, TextInput, TouchableOpacity, ScrollView } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 
-import Header from '../../components/Header'
 import MainButton from '../../components/MainButton'
 import TitleText from '../../components/TitleText'
 
@@ -16,8 +15,6 @@ export default function ChangeData(){
     return (
         <ScrollView>
             <View style={styles.container}>
-                <Header/>
-
                 <TitleText>Alterar Dados</TitleText>
 
                 <View style={styles.inputContainer}>

@@ -2,7 +2,6 @@ import React from  'react'
 import { StyleSheet, View, Text, TextInput, TouchableOpacity, ScrollView } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 
-import Header from '../../components/Header'
 import MainButton from '../../components/MainButton'
 import TitleText from '../../components/TitleText'
 
@@ -14,10 +13,8 @@ export default function CreateAccount(){
     }
 
     return (
-        <ScrollView>
+        <ScrollView style={styles.scrollContainer}>
             <View style={styles.container}>
-                <Header/>
-
                 <TitleText>Dados cadastrais</TitleText>
 
                 <View style={styles.inputContainer}>
@@ -37,15 +34,20 @@ export default function CreateAccount(){
 }
 
 const styles = StyleSheet.create({
-    container: {
+    scrollContainer: {
         backgroundColor: '#4CB6CE',
+        flex: 1,
+        paddingTop: 20,
+    },
+
+    container: {
         alignItems: 'center',
         justifyContent: 'center',
-        flex: 1
     },
 
     inputContainer: {
-        width: '95%'
+        width: '95%',
+        marginTop: 10
     },
     
     input: {
@@ -55,8 +57,7 @@ const styles = StyleSheet.create({
         fontSize: 16,
         borderRadius: 8,
         padding: 16,
-        margin: 5,
-        width: '95%'
+        margin: 7
     },
 
     createAccount: {

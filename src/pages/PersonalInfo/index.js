@@ -2,7 +2,6 @@ import React from 'react'
 import {View, Text, StyleSheet} from 'react-native'
 import {useNavigation} from '@react-navigation/native'
 
-import Header from '../../components/Header'
 import TitleText from '../../components/TitleText'
 import MainButton from '../../components/MainButton'
 
@@ -23,8 +22,6 @@ export default function PersonalInfo(){
 
     return (
         <View style={styles.container}>
-            <Header/>
-
             <TitleText>Informações</TitleText>
 
             <Text style={styles.text}>Nome: </Text>
@@ -33,11 +30,11 @@ export default function PersonalInfo(){
             <Text style={styles.text}>CPF/CNPJ: </Text>
             <Text style={styles.text}>Localização: </Text>
 
-            <MainButton onPress={NewEvent}>Novo evento</MainButton>
-            <MainButton onPress={NewPromotion}>Nova promoção</MainButton>
-            <MainButton onPress={() => console.log('Alterar dados')}>Alterar dados</MainButton>
-            <MainButton onPress={() => console.log('Convidar')}>Convidar</MainButton>
-            <MainButton onPress={Logout}>Sair</MainButton>
+            <MainButton width='95%' onPress={NewEvent}>Novo evento</MainButton>
+            <MainButton width='95%' onPress={NewPromotion}>Nova promoção</MainButton>
+            <MainButton width='95%' onPress={() => console.log('Alterar dados')}>Alterar dados</MainButton>
+            <MainButton width='95%' onPress={() => console.log('Convidar')}>Convidar</MainButton>
+            <MainButton width='95%' onPress={Logout}>Sair</MainButton>
         </View>
     )
 }
@@ -52,9 +49,11 @@ const styles = StyleSheet.create({
 
     text: {
         color: '#FFF',
-        fontSize: 12,
+        fontSize: 16,
         textAlign: 'left',
         fontWeight: 'bold',
-        marginBottom: 10
+        margin: 5,
+        marginLeft: 30,
+        width: '100%'
     }
 })

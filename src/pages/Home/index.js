@@ -3,7 +3,6 @@ import React from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-import Header from '../../components/Header'
 import MainButton from '../../components/MainButton'
 
 export default function Home() {
@@ -15,8 +14,6 @@ export default function Home() {
 
   return (
     <View style={styles.container}>
-      <Header/>
-
       <StatusBar style="auto" />
 
       <Text style={styles.promotionText}>Encontre os melhores eventos mais perto de você.</Text>

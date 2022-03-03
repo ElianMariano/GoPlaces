@@ -1,27 +1,37 @@
-import React from 'react'
-import {TextInput, View, StyleSheet, Dimensions} from 'react-native'
-import MapView, {PROVIDER_GOOGLE} from 'react-native-maps'
+import React, {useState} from 'react'
+import {TextInput, View, StyleSheet} from 'react-native'
+import MapView, {Marker} from 'react-native-maps'
 
-import Header from '../../components/Header'
 import TitleText from '../../components/TitleText'
 
 export default function EventMap(){
+    const [position, setPosition] = useState({
+        latitude: -20.804060003530386,
+        longitude: -41.15609999779664,
+        latitudeDelta: 0.00552,
+        longitudeDelta: 0.00251,
+    });
+
     return (
         <View style={styles.container}>
-            <Header/>
-
             <TitleText>Mapa de Eventos</TitleText>
 
             <TextInput style={styles.input} placeholder='Pesquisar'/>
 
-            <MapView style={{flex: 1}}
-                initialRegion={{
-                latitude: 37.78825,
-                longitude: -122.4324,
-                latitudeDelta: 0.0922,
-                longitudeDelta: 0.0421,
-                }}
-            />
+            <MapView
+                style={styles.map}
+                region={position}
+                onPress={e =>
+                setPosition({
+                ...position,
+                })}>
+
+                <Marker
+                    coordinate={position}
+                    title={'Chega Mais'}
+                    description={'Verdinho Bar Universitário'}
+                />
+            </MapView>
         </View>
     )
 }

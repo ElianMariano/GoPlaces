@@ -16,8 +16,6 @@ export default function ChangePassword(){
     return (
         <ScrollView>
             <View style={styles.container}>
-                <Header/>
-
                 <TitleText>Alterar Senha</TitleText>
 
                 <View style={styles.inputContainer}>

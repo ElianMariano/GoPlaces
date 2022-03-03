@@ -2,7 +2,6 @@ import React from 'react'
 import {View, Text, StyleSheet} from 'react-native'
 import {useNavigation} from '@react-navigation/native'
 
-import Header from '../../components/Header'
 import TitleText from '../../components/TitleText'
 import MainButton from '../../components/MainButton'
 

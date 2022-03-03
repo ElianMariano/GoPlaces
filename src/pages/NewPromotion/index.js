@@ -3,7 +3,6 @@ import {View, Text, StyleSheet, TextInput, ScrollView} from 'react-native'
 import {Ionicons} from '@expo/vector-icons'
 import { useNavigation } from '@react-navigation/native'
 
-import Header from '../../components/Header'
 import TitleText from '../../components/TitleText'
 import MainButton from '../../components/MainButton'
 
@@ -17,8 +16,6 @@ export default function NewPromotion(){
     return (
         <ScrollView>
             <View style={styles.container}>
-                <Header />
-
                 <TitleText>Nova Promoção</TitleText>
 
                 <TextInput placeholder="Nome da Promoção" style={styles.input}/>

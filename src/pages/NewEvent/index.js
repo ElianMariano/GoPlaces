@@ -3,7 +3,6 @@ import {View, Text, StyleSheet, TextInput, Pressable} from 'react-native'
 import {Ionicons} from '@expo/vector-icons'
 import { useNavigation } from '@react-navigation/native'
 
-import Header from '../../components/Header'
 import TitleText from '../../components/TitleText'
 import MainButton from '../../components/MainButton'
 
@@ -16,8 +15,6 @@ export default function NewEvent(){
 
     return (
         <View style={styles.container}>
-            <Header />
-
             <TitleText>Novo evento</TitleText>
 
             <TextInput placeholder="Novo Evento" style={styles.input}/>
