@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, TextInput, TouchableOpacity, ScrollView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 import MainButton from '../../components/MainButton'
@@ -13,31 +13,34 @@ export default function Home() {
   }
 
   return (
-    <View style={styles.container}>
-      <StatusBar style="auto" />
+    <ScrollView style={styles.scrollContainer}>
+      <View style={styles.container}>
+        <Text style={styles.promotionText}>Encontre os melhores eventos mais perto de você.</Text>
 
-      <Text style={styles.promotionText}>Encontre os melhores eventos mais perto de você.</Text>
+        <View style={styles.inputContainer}>
+          <TextInput placeholder="Usuário" style={styles.input}/>
+          <TextInput placeholder="Senha" style={styles.input}/>
 
-      <View style={styles.inputContainer}>
-        <TextInput placeholder="Usuário" style={styles.input}/>
-        <TextInput placeholder="Senha" style={styles.input}/>
+          <MainButton onPress={() => console.log('Login')}>Login</MainButton>
 
-        <MainButton onPress={() => console.log('Login')}>Login</MainButton>
-
-        <TouchableOpacity onPress={CreateAccount}>
-          <Text style={styles.accountText}>Não tem uma conta? Crie agora.</Text>
-        </TouchableOpacity>
+          <TouchableOpacity onPress={CreateAccount}>
+            <Text style={styles.accountText}>Não tem uma conta? Crie agora.</Text>
+          </TouchableOpacity>
+        </View>
       </View>
-    </View>
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
+  scrollContainer: {
     backgroundColor: '#4CB6CE',
+    flex: 1
+  },
+
+  container: {
     alignItems: 'center',
     justifyContent: 'center',
-    flex: 1
   },
 
   inputContainer: {
@@ -57,7 +60,7 @@ const styles = StyleSheet.create({
 
   promotionText: {
     color: '#FFF',
-    fontSize: 46,
+    fontSize: 52,
     textAlign: 'left',
     fontWeight: 'bold',
     margin: 4,
@@ -67,7 +70,7 @@ const styles = StyleSheet.create({
 
   accountText: {
     color: '#FFF',
-    fontSize: 14,
+    fontSize: 16,
     textAlign: 'right',
     fontWeight: 'bold',
     marginRight: 10

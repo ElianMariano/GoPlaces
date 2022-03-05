@@ -34,7 +34,7 @@ export default function PersonalInfo(){
     return (
         <ScrollView style={styles.scrollContainer}>
             <View style={styles.container}>
-                <TitleText>Dados cadastrais</TitleText>
+                <TitleText>Eventos</TitleText>
 
                 <View style={styles.inputContainer}>
                     <EventBox

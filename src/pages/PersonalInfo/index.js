@@ -4,6 +4,7 @@ import {useNavigation} from '@react-navigation/native'
 
 import TitleText from '../../components/TitleText'
 import MainButton from '../../components/MainButton'
+import Invitation from '../Invitation'
 
 export default function PersonalInfo(){
     const Navigation = useNavigation()
@@ -14,6 +15,14 @@ export default function PersonalInfo(){
     
     function NewPromotion(){
         Navigation.push('NewPromotion')
+    }
+
+    function Invitation(){
+        Navigation.push('Invitation')
+    }
+
+    function ChangeData(){
+        Navigation.push('ChangeData')
     }
 
     function Logout(){
@@ -32,8 +41,8 @@ export default function PersonalInfo(){
 
             <MainButton width='95%' onPress={NewEvent}>Novo evento</MainButton>
             <MainButton width='95%' onPress={NewPromotion}>Nova promoção</MainButton>
-            <MainButton width='95%' onPress={() => console.log('Alterar dados')}>Alterar dados</MainButton>
-            <MainButton width='95%' onPress={() => console.log('Convidar')}>Convidar</MainButton>
+            <MainButton width='95%' onPress={ChangeData}>Alterar dados</MainButton>
+            <MainButton width='95%' onPress={Invitation}>Convidar</MainButton>
             <MainButton width='95%' onPress={Logout}>Sair</MainButton>
         </View>
     )

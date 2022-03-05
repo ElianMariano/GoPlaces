@@ -9,8 +9,9 @@ import NewEvent from '../pages/NewEvent';
 import NewPromotion from '../pages/NewPromotion';
 import Reserve from '../pages/Reserve';
 import Promotion from '../pages/Promotion';
+import Invitation from '../pages/Invitation'
+import ChangeData from '../pages/ChangeData'
 import Maps from '../pages/Maps';
-import Maps2 from '../pages/Maps2';
 
 const Stack = createNativeStackNavigator()
 
@@ -160,9 +161,10 @@ export default function AppStack(){
                         }
                     }}
                 />
+
                 <Stack.Screen
-                    name="Maps2"
-                    component={Maps2}
+                    name="Promotion"
+                    component={Promotion}
                     options={{
                         title: "GOPlaces",
                         headerStyle: {
@@ -180,9 +182,31 @@ export default function AppStack(){
                         }
                     }}
                 />
+
                 <Stack.Screen
-                    name="Promotion"
-                    component={Promotion}
+                    name="Invitation"
+                    component={Invitation}
+                    options={{
+                        title: "GOPlaces",
+                        headerStyle: {
+                            backgroundColor: '#2C93AA',
+                            padding: 12,
+                            margin: 0,
+                            width: '100%',
+                            marginBottom: 6
+                        },
+                        headerTintColor: '#FFF',
+                        headerTitleStyle: {
+                            fontSize: 28,
+                            textAlign: 'left',
+                            fontWeight: 'bold'
+                        }
+                    }}
+                />
+
+                <Stack.Screen
+                    name="ChangeData"
+                    component={ChangeData}
                     options={{
                         title: "GOPlaces",
                         headerStyle: {
@@ -204,10 +228,3 @@ export default function AppStack(){
         </NavigationContainer>
     )
 }
-
-/*
-headerMode='none'
-                screenOptions={{
-                headerShown: false
-                }}
-*/

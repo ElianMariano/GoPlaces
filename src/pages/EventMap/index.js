@@ -51,11 +51,13 @@ const styles = StyleSheet.create({
         fontSize: 16,
         borderRadius: 8,
         padding: 16,
-        margin: 4,
+        margin: 8,
         width: '95%'
     },
 
     map: {
-        width: '95%'
+        width: '95%',
+        height: '70%',
+        borderRadius: 8
     }
 })
