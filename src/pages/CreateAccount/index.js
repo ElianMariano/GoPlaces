@@ -5,10 +5,18 @@ import * as Location from 'expo-location'
 
 import MainButton from '../../components/MainButton'
 import TitleText from '../../components/TitleText'
+import api from '../../services/api'
 
 export default function CreateAccount(){
-    const [location, setLocation] = useState()
+    const [name, setName] = useState("")
+    const [birthdate, setBirthdate] = useState("")
+    const [cpf, setCpf] = useState("")
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
+    const [passwordConfimation, setPasswordConfirmation] = useState("")
+    const [warningText, setWarningText] = useState("")
     const [isEnabled, setIsEnabled] = useState(false)
+    const [location, setLocation] = useState()
     const Navigation = useNavigation()
 
     useEffect(async () => {
@@ -16,6 +24,7 @@ export default function CreateAccount(){
 
         if (status !== 'granted') {
             console.log('Error when retrieving location data!')
+            setWarningText("Por favor, permita a localização.")
             return;
         }
 
@@ -25,7 +34,38 @@ export default function CreateAccount(){
     }, []);
 
     function CreateAccount(){
-        Navigation.push('EventTabs')
+        if (name === "" ||
+            birthdate === "" ||
+            cpf === "" ||
+            email === "" ||
+            password === "" ||
+            passwordConfimation === "" ||
+            location === undefined){
+            setWarningText("Por favor, preencha todos os campos.")
+        }
+        else if (password != passwordConfimation){
+            console.log("senha diferente")
+            setWarningText("As senhas devem combinar.")
+        }
+        else {
+            setWarningText("")
+            api.post("/users", {
+                name,
+                birthdate,
+                cpf,
+                email,
+                long: location.coords.longitude,
+                lat: location.coords.latitude,
+                isCompany: isEnabled,
+                password
+            })
+            .then(res => {
+                Navigation.goBack()
+            })
+            .catch(err => {
+                console.log("Error")
+            })
+        }
     }
 
     return (
@@ -34,13 +74,33 @@ export default function CreateAccount(){
                 <TitleText>Dados cadastrais</TitleText>
 
                 <View style={styles.inputContainer}>
-                    <TextInput placeholder="Nome" style={styles.input}/>
+                    <TextInput
+                        placeholder="Nome"
+                        style={styles.input}
+                        value={name}
+                        onChangeText={setName}
+                    />
 
-                    <TextInput placeholder="Nascimento" style={styles.input}/>
+                    <TextInput
+                        placeholder="Nascimento"
+                        style={styles.input}
+                        value={birthdate}
+                        onChangeText={setBirthdate}
+                    />
 
-                    <TextInput placeholder="CPF/CNPJ" style={styles.input}/>
+                    <TextInput
+                        placeholder="CPF/CNPJ"
+                        style={styles.input}
+                        value={cpf}
+                        onChangeText={setCpf}
+                    />
 
-                    <TextInput placeholder="Email" style={styles.input}/>
+                    <TextInput
+                        placeholder="Email"
+                        style={styles.input}
+                        value={email}
+                        onChangeText={setEmail}
+                    />
 
                     <View style={styles.switchContainer}>
                         <Text style={styles.text}>É empresa?</Text>
@@ -54,9 +114,24 @@ export default function CreateAccount(){
                         />
                     </View>
 
-                    <TextInput placeholder="Senha" style={styles.input}/>
+                    <TextInput
+                        placeholder="Senha"
+                        style={styles.input}
+                        value={password}
+                        onChangeText={setPassword}
+                    />
 
-                    <TextInput placeholder="Confirmar senha" style={styles.input}/>
+                    <TextInput
+                        placeholder="Confirmar senha"
+                        style={styles.input}
+                        value={passwordConfimation}
+                        onChangeText={setPasswordConfirmation}
+                    />
+
+                    {warningText !== "" &&
+                    (
+                        <Text style={styles.warningText}>{warningText}</Text>
+                    )}
 
                     <MainButton onPress={CreateAccount}>Criar conta</MainButton>
                 </View>
@@ -70,6 +145,14 @@ const styles = StyleSheet.create({
         backgroundColor: '#4CB6CE',
         flex: 1,
         paddingTop: 20,
+    },
+
+    warningText: {
+        color: '#ed392f',
+        fontSize: 16,
+        fontWeight: 'bold',
+        width: '100%',
+        textAlign: 'center'
     },
 
     switchContainer: {

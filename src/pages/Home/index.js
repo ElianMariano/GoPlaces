@@ -1,15 +1,48 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
+import React, {useState} from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, ScrollView } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage'
 import { useNavigation } from '@react-navigation/native';
 
+import api from '../../services/api'
 import MainButton from '../../components/MainButton'
 
 export default function Home() {
   const Navigation = useNavigation()
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+  const [warningText, setWarningText] = useState("")
 
   function CreateAccount(){
     Navigation.push('CreateAccount')
+  }
+
+  function Login(){
+    if (email === "" || password === ""){
+      setWarningText("Preencha todos os dados.")
+    }
+    else{
+      setWarningText("")
+      api.get("/users", {}, {params: {email, password}})
+      .then(async res => {
+        const [user] = res.data
+
+        if (user.email === email &&  user.password === password){
+          await AsyncStorage.setItem("@login", JSON.stringify(user))
+            .then(res => {
+              Navigation.push('EventTabs')
+            })
+            .catch(e => {
+              console.log(e)
+            })
+        }
+        else{
+          setWarningText("Usuário e/ou senha incorretos.")
+        }
+      })
+      .catch(err => {
+        console.log("Error")
+      })
+    }
   }
 
   return (
@@ -18,10 +51,26 @@ export default function Home() {
         <Text style={styles.promotionText}>Encontre os melhores eventos mais perto de você.</Text>
 
         <View style={styles.inputContainer}>
-          <TextInput placeholder="Usuário" style={styles.input}/>
-          <TextInput placeholder="Senha" style={styles.input}/>
+          <TextInput
+            placeholder="Email"
+            style={styles.input}
+            value={email}
+            onChangeText={setEmail}
+          />
 
-          <MainButton onPress={() => console.log('Login')}>Login</MainButton>
+          <TextInput
+            placeholder="Senha"
+            style={styles.input}
+            value={password}
+            onChangeText={setPassword}
+          />
+
+          {warningText !== "" &&
+          (
+              <Text style={styles.warningText}>{warningText}</Text>
+          )}
+
+          <MainButton onPress={Login}>Login</MainButton>
 
           <TouchableOpacity onPress={CreateAccount}>
             <Text style={styles.accountText}>Não tem uma conta? Crie agora.</Text>
@@ -41,6 +90,14 @@ const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
     justifyContent: 'center',
+  },
+
+  warningText: {
+    color: '#ed392f',
+    fontSize: 16,
+    fontWeight: 'bold',
+    width: '100%',
+    textAlign: 'center'
   },
 
   inputContainer: {
