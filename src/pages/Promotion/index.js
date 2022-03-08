@@ -1,31 +1,59 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import {View, Text, StyleSheet, TextInput, Pressable} from 'react-native'
 import {Ionicons} from '@expo/vector-icons'
 import { useNavigation } from '@react-navigation/native'
 
+import api from '../../services/api'
 import TitleText from '../../components/TitleText'
 import MainButton from '../../components/MainButton'
 
-export default function Promotion(){
-    const {goBack} = useNavigation()
+export default function Promotion({route}){
+    const Navigation = useNavigation()
+    const [name, setName] = useState("")
+    const [validade, setValidade] = useState("")
+    const [desconto, setDesconto] = useState("")
+    const [descricao, setDescricao] = useState("")
+
+    useEffect(() => {
+        const {eventId} = route.params
+        console.log(eventId)
+        api.get(`/event/${eventId}/promotion`, {})
+        .then(res => {
+            console.log(res.data)
+            const [data] = res.data
+
+            setName(data.name)
+            setValidade(data.expire_at)
+            setDesconto(data.desconto)
+            setDescricao(data.descricao)
+        })
+        .catch(e => {
+            console.log(e)
+        })
+    }, [])
+
+    function Reserve(){
+        Navigation.push("Reserve")
+    }
 
     function Cancel(){
-        goBack()
+        Navigation.goBack()
     }
 
     return (
         <View style={styles.container}>
             <TitleText>Promoções</TitleText>
 
-            <TextInput placeholder="Buteco do Carangueijo: 2 Heineken" style={styles.input}/>
+            <Text style={styles.dataText}>Promoção: {name}</Text>
 
-            <View style={styles.uploadContainer}>
-                <Text style={styles.uploadText}>Upload de Imagem</Text>
-            </View>
+            <Text style={styles.dataText}>Validade: {validade}</Text>
 
+            <Text style={styles.dataText}>Desconto: {desconto}%</Text>
+
+            <Text style={styles.dataText}>Descrição: {descricao}</Text>
 
             <View style={{flex: 1, paddingTop: '46%', width: '100%', paddingLeft: 8}}>
-                <MainButton onPress={() => console.log('Cadastrar reserva')}>Participar</MainButton>
+                <MainButton onPress={Reserve}>Reservar</MainButton>
                 <MainButton onPress={Cancel}>Cancelar</MainButton>
             </View>
         </View>
@@ -38,6 +66,14 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         flex: 1
+    },
+
+    dataText: {
+        color: '#FFF',
+        fontSize: 16,
+        textAlign: 'center',
+        fontWeight: 'bold',
+        marginBottom: 10
     },
 
     input: {

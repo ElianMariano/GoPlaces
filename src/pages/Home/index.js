@@ -22,12 +22,16 @@ export default function Home() {
     }
     else{
       setWarningText("")
-      api.get("/users", {}, {params: {email, password}})
+      api.get("/users", {}, {params: {email}})
       .then(async res => {
-        const [user] = res.data
-
-        if (user.email === email &&  user.password === password){
-          await AsyncStorage.setItem("@login", JSON.stringify(user))
+        const [data] = res.data.filter(user => {
+          if (user.email === email){
+            return user
+          }
+        })
+        
+        if (data.email === email &&  data.password === password){
+          await AsyncStorage.setItem("@login", JSON.stringify(data))
             .then(res => {
               Navigation.push('EventTabs')
             })
@@ -40,7 +44,8 @@ export default function Home() {
         }
       })
       .catch(err => {
-        console.log("Error")
+        setWarningText("Usuário e/ou senha incorretos.")
+        console.log(err)
       })
     }
   }

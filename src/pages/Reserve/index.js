@@ -9,6 +9,10 @@ import MainButton from '../../components/MainButton'
 export default function Reserve(){
     const {goBack} = useNavigation()
 
+    function Reserve(){
+        
+    }
+
     function Cancel(){
         goBack()
     }

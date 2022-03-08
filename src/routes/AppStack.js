@@ -6,7 +6,6 @@ import Home from '../pages/Home'
 import CreateAccount from '../pages/CreateAccount';
 import EventTabs from './EventTabs';
 import NewEvent from '../pages/NewEvent';
-import NewPromotion from '../pages/NewPromotion';
 import Reserve from '../pages/Reserve';
 import Promotion from '../pages/Promotion';
 import Invitation from '../pages/Invitation'
@@ -101,26 +100,7 @@ export default function AppStack(){
                         }
                     }}
                 />
-                <Stack.Screen
-                    name="NewPromotion"
-                    component={NewPromotion}
-                    options={{
-                        title: "GOPlaces",
-                        headerStyle: {
-                            backgroundColor: '#2C93AA',
-                            padding: 12,
-                            margin: 0,
-                            width: '100%',
-                            marginBottom: 6
-                        },
-                        headerTintColor: '#FFF',
-                        headerTitleStyle: {
-                            fontSize: 28,
-                            textAlign: 'left',
-                            fontWeight: 'bold'
-                        }
-                    }}
-                />
+
                 <Stack.Screen
                     name="Reserve"
                     component={Reserve}

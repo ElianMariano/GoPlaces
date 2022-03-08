@@ -1,5 +1,5 @@
-import React from  'react'
-import { StyleSheet, View, Text, TextInput, TouchableOpacity, ScrollView } from 'react-native'
+import React, {useState} from 'react'
+import { StyleSheet, View, Text, TextInput, TouchableOpacity, ScrollView, Linking} from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 
 import MainButton from '../../components/MainButton'
@@ -7,21 +7,22 @@ import TitleText from '../../components/TitleText'
 
 export default function Invitation(){
     const Navigation = useNavigation()
+    const [numero, setNumero] = useState("")
+    const msg = "Baixe o app GoPlaces."
 
     function Invitation(){
-        Navigation.push('EventTabs')
+        Linking.openURL(`whatsapp://send?text=${msg}&phone=${"+55"+numero}}`)
     }
 
     return (
-        <ScrollView>
+        <ScrollView style={styles.scrollContainer}>
             <View style={styles.container}>
                 <TitleText>Convidar</TitleText>
 
                 <View style={styles.inputContainer}>
-                    <TextInput placeholder="Nome" style={styles.input}/>
-                    <TextInput placeholder="Nascimento" style={styles.input}/>
+                    <TextInput placeholder="Nascimento" style={styles.input} value={numero} onChangeText={setNumero}/>
 
-                    <MainButton onPress={Invitation}>Alterar Dados</MainButton>
+                    <MainButton onPress={Invitation}>Convidar</MainButton>
                     <MainButton onPress={Invitation}>Cancelar</MainButton>
                 </View>
             </View>
@@ -30,11 +31,14 @@ export default function Invitation(){
 }
 
 const styles = StyleSheet.create({
-    container: {
+    scrollContainer: {
         backgroundColor: '#4CB6CE',
+        flex: 1
+    },
+
+    container: {
         alignItems: 'center',
         justifyContent: 'center',
-        flex: 1
     },
 
     inputContainer: {

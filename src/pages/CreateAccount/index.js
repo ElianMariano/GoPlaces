@@ -30,7 +30,6 @@ export default function CreateAccount(){
 
         let location = await Location.getCurrentPositionAsync({});
         setLocation(location);
-        console.log(location);
     }, []);
 
     function CreateAccount(){

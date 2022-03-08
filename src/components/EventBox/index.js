@@ -5,7 +5,7 @@ import {useNavigation} from '@react-navigation/native'
 
 import MainButton from '../MainButton'
 
-function EventBox({title, image}){
+function EventBox({title, image, eventId}){
     const Navigation = useNavigation();
 
     function Maps(){
@@ -15,16 +15,16 @@ function EventBox({title, image}){
     function Reserve(){
         Navigation.push('Reserve')
     }
-    
+
     function Promotion(){
-        Navigation.push('Promotion')
+        Navigation.navigate('Promotion', {eventId})
     }
 
     return (
         <View style={styles.container}>
             <View style={styles.imageContainer}>
                 <Image
-                    source={image}
+                    source={{uri: image}}
                     style={styles.image}
                 />
 
@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
 
     text: {
         color: '#000',
-        fontSize: 18,
+        fontSize: 16,
         textAlign: 'left',
         fontWeight: 'bold',
         marginTop: 4

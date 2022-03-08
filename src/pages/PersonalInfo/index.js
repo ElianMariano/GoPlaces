@@ -46,10 +46,6 @@ export default function PersonalInfo(){
     function NewEvent(){
         Navigation.push('NewEvent')
     }
-    
-    function NewPromotion(){
-        Navigation.push('NewPromotion')
-    }
 
     function Invitation(){
         Navigation.push('Invitation')
@@ -58,7 +54,7 @@ export default function PersonalInfo(){
     function ChangeData(){
         Navigation.push('ChangeData')
     }
-
+// <Text style={styles.text}>Localização: </Text>
     return (
         <View style={styles.container}>
             <TitleText>Informações</TitleText>
@@ -67,16 +63,11 @@ export default function PersonalInfo(){
             <Text style={styles.text}>Nascimento: {birthdate}</Text>
             <Text style={styles.text}>Email: {email}</Text>
             <Text style={styles.text}>CPF/CNPJ: {cpf}</Text>
-            <Text style={styles.text}>Localização: </Text>
+            
 
             {isCompany && 
             (
                 <MainButton width='95%' onPress={NewEvent}>Novo evento</MainButton>
-            )}
-
-            {isCompany && 
-            (
-                <MainButton width='95%' onPress={NewPromotion}>Nova promoção</MainButton>
             )}
 
             <MainButton width='95%' onPress={ChangeData}>Alterar dados</MainButton>

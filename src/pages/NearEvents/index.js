@@ -1,16 +1,25 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import {View, Text, StyleSheet, ScrollView, TextInput, Image} from 'react-native'
 import {useNavigation} from '@react-navigation/native'
 
+import api from '../../services/api'
 import TitleText from '../../components/TitleText'
 import MainButton from '../../components/MainButton'
 import EventBox from '../../components/EventBox'
 
-import Primeira from './primeira.png'
-import Segunda from './segunda.png'
-
 export default function PersonalInfo(){
+    const [events, setEvents] = useState([])
     const Navigation = useNavigation()
+
+    useEffect(() => {
+        api.get("/event", {})
+        .then(res => {
+            setEvents(res.data)
+        })
+        .catch(e => {
+            console.log(e)
+        })
+    }, [])
 
     function Reserve(){
         Navigation.push('Reserve')
@@ -23,9 +32,6 @@ export default function PersonalInfo(){
     function Maps(){
         Navigation.push('Maps')
     }
-    function Maps2(){
-        Navigation.push('Maps2')
-    }
 
     function Logout(){
         Navigation.push('Home')
@@ -37,25 +43,18 @@ export default function PersonalInfo(){
                 <TitleText>Eventos</TitleText>
 
                 <View style={styles.inputContainer}>
-                    <EventBox
-                        title="Kiko's Rest e Pizzaria"
-                        image={Segunda}
-                    />
-
-                    <EventBox
-                        title="Kiko's Rest e Pizzaria"
-                        image={Primeira}
-                    />
-
-                    <EventBox
-                        title="Kiko's Rest e Pizzaria"
-                        image={Segunda}
-                    />
-
-                    <EventBox
-                        title="Kiko's Rest e Pizzaria"
-                        image={Primeira}
-                    />
+                    {
+                        events.map((event) => {
+                            return (
+                                <EventBox
+                                    key={String(event.id)}
+                                    title={event.title}
+                                    image={String(event.image_url)}
+                                    eventId={event.id}
+                                />
+                            )
+                        })
+                    }
                 </View>
             </View>
         </ScrollView>

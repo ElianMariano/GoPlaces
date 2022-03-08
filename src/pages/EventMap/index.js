@@ -1,16 +1,28 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import {TextInput, View, StyleSheet} from 'react-native'
 import MapView, {Marker} from 'react-native-maps'
 
+import api from '../../services/api'
 import TitleText from '../../components/TitleText'
 
 export default function EventMap(){
+    const [events, setEvents] = useState([])
     const [position, setPosition] = useState({
         latitude: -20.804060003530386,
         longitude: -41.15609999779664,
         latitudeDelta: 0.00552,
         longitudeDelta: 0.00251,
     });
+
+    useEffect(() => {
+        api.get("/event", {})
+        .then(res => {
+            setEvents(res.data)
+        })
+        .catch(e => {
+            console.log(e)
+        })
+    }, [])
 
     return (
         <View style={styles.container}>
@@ -26,11 +38,19 @@ export default function EventMap(){
                 ...position,
                 })}>
 
-                <Marker
-                    coordinate={position}
-                    title={'Chega Mais'}
-                    description={'Verdinho Bar Universitário'}
-                />
+                {
+                    events.map(event => {
+                        const point = {latitude: event.lat, longitude: event.long}
+                        return (
+                            <Marker
+                                key={String(event.id)}
+                                coordinate={point}
+                                title={event.title}
+                                description={'Venha ver as nossas novas promoções'}
+                            />
+                        )
+                    })
+                }
             </MapView>
         </View>
     )
